@@ -18,11 +18,6 @@ public class NoWitherBossbar implements Listener {
 
     private static final @NotNull Set<String> HIDDEN = new HashSet<>();
 
-    static {
-        HIDDEN.add("nbr");
-        HIDDEN.add("NBR");
-    }
-
     @EventHandler(priority = EventPriority.LOW)
     public void on(@NotNull EntityAddToWorldEvent event) {
         Optional.of(event.getEntity())
@@ -40,6 +35,7 @@ public class NoWitherBossbar implements Listener {
     }
 
     private static void checkVisible(@NotNull BossBar bar, @NotNull String name) {
-        bar.setVisible(!HIDDEN.contains(name));
+        boolean isHidden = name.toLowerCase().contains("nbr");
+        bar.setVisible(!isHidden);
     }
 }
