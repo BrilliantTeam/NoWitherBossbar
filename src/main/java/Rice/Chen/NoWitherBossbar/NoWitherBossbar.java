@@ -19,7 +19,10 @@ public class NoWitherBossbar implements Listener {
         Optional.of(event.getEntity())
                 .map(entity -> entity instanceof Boss boss ? boss : null)
                 .map(Boss::getBossBar)
-                .ifPresent(bar -> checkVisible(bar, bar.getTitle()));
+                .ifPresent(bar -> {
+                    boolean visible = determineVisibility(bar.getTitle());
+                    bar.setVisible(visible);
+                });
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -27,11 +30,14 @@ public class NoWitherBossbar implements Listener {
         Optional.of(event.getEntity())
                 .map(entity -> entity instanceof Boss boss ? boss : null)
                 .map(Boss::getBossBar)
-                .ifPresent(bar -> checkVisible(bar, event.getName() instanceof TextComponent component ? component.content() : ""));
+                .ifPresent(bar -> {
+                    String name = event.getName() instanceof TextComponent component ? component.content() : "";
+                    boolean visible = determineVisibility(name);
+                    bar.setVisible(visible);
+                });
     }
 
-    private static void checkVisible(@NotNull BossBar bar, @NotNull String name) {
-        boolean isHidden = name.toLowerCase().contains("nbr");
-        bar.setVisible(!isHidden);
+    private static boolean determineVisibility(@NotNull String name) {
+        return !name.toLowerCase().contains("nbr");
     }
 }
