@@ -10,13 +10,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 
 public class NoWitherBossbar implements Listener {
-
-    private static final @NotNull Set<String> HIDDEN = new HashSet<>();
 
     @EventHandler(priority = EventPriority.LOW)
     public void on(@NotNull EntityAddToWorldEvent event) {
