@@ -21,6 +21,14 @@ public class NoWitherBossbarCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        // 檢查是否有 nowitherbossbar 權限
+        if (!sender.hasPermission("nowitherbossbar.admin")) {
+            sender.sendMessage(Component.text("[NoWitherBossbar] ").color(NamedTextColor.WHITE)
+                    .append(Component.text("You don't have permission to use this command!")
+                    .color(NamedTextColor.RED)));
+            return true;
+        }
+
         if (args.length == 0) {
             // 顯示插件基本信息
             sender.sendMessage(Component.text("=== NoWitherBossbar ===").color(NamedTextColor.GOLD));
@@ -73,6 +81,11 @@ public class NoWitherBossbarCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String[] args) {
+        // 添加權限檢查到 Tab 補全
+        if (!sender.hasPermission("nowitherbossbar.admin")) {
+            return new ArrayList<>();
+        }
+        
         List<String> completions = new ArrayList<>();
         
         if (args.length == 1) {

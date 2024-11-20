@@ -18,8 +18,8 @@ public class NoWitherBossbar extends JavaPlugin {
         getServer().getPluginManager().registerEvents(nameListener, this);
 
         NoWitherBossbarCommand commandExecutor = new NoWitherBossbarCommand(this);
-        getCommand("nowitherbar").setExecutor(commandExecutor);
-        getCommand("nowitherbar").setTabCompleter(commandExecutor);
+        getCommand("nowitherbossbar").setExecutor(commandExecutor);
+        getCommand("nowitherbossbar").setTabCompleter(commandExecutor);
         
         getLogger().info("NoWitherBossbar has been enabled!");
     }
