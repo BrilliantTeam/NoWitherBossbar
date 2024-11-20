@@ -34,6 +34,7 @@ public class ServerScheduler {
         }
     }
 
+    //Folia 環境下的處理
     private static void processFolia(Plugin plugin, World world, Consumer<Entity> processor, Runnable callback) {
         AtomicInteger processedEntities = new AtomicInteger(0);
         AtomicInteger errorCount = new AtomicInteger(0);
@@ -103,6 +104,7 @@ public class ServerScheduler {
         });
     }
 
+    //非 Folia 環境下的處理
     private static void processNonFolia(Plugin plugin, World world, Consumer<Entity> processor, Runnable callback) {
         new BukkitRunnable() {
             @Override

@@ -21,7 +21,7 @@ public class NoWitherBossbarCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        // 檢查是否有 nowitherbossbar 權限
+        // 檢查是否有 nowitherbossbar.admin 權限
         if (!sender.hasPermission("nowitherbossbar.admin")) {
             sender.sendMessage(Component.text("[NoWitherBossbar] ").color(NamedTextColor.WHITE)
                     .append(Component.text("You don't have permission to use this command!")
@@ -46,7 +46,7 @@ public class NoWitherBossbarCommand implements CommandExecutor, TabCompleter {
             case "reload" -> {
                 // 重新加載配置文件
                 plugin.reloadConfig();
-                // 更新所有現有的 Boss 血條
+                // 更新所有現有的 BossBar
                 plugin.getNameListener().updateAllBossBars();
                 sender.sendMessage(Component.text("[NoWitherBossbar] ").color(NamedTextColor.WHITE)
                         .append(Component.text("Configuration reloaded successfully!")

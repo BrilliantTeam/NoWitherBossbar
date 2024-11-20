@@ -24,6 +24,7 @@ public class Name implements Listener {
         this.plugin = plugin;
     }
 
+    // 處理實體加入世界事件
     @EventHandler(priority = EventPriority.LOW)
     public void on(@NotNull EntityAddToWorldEvent event) {
         Optional.of(event.getEntity())
@@ -35,6 +36,7 @@ public class Name implements Listener {
                 });
     }
 
+    // 處理玩家命名實體事件
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void on(@NotNull PlayerNameEntityEvent event) {
         Optional.of(event.getEntity())
@@ -47,6 +49,7 @@ public class Name implements Listener {
                 });
     }
 
+    // 決定 BossBar 是否應該顯示
     private static boolean determineVisibility(@NotNull String name) {
         List<String> hideTags = NoWitherBossbar.getInstance().getConfig().getStringList("hide-bossbar-tags");
         String lowerName = name.toLowerCase();
@@ -54,11 +57,13 @@ public class Name implements Listener {
                 .noneMatch(tag -> lowerName.contains(tag.toLowerCase()));
     }
 
+    // 更新所有世界中的 BossBar 
     public void updateAllBossBars() {
         AtomicInteger worldsToProcess = new AtomicInteger(plugin.getServer().getWorlds().size());
         AtomicInteger updatedCount = new AtomicInteger(0);
         AtomicInteger errorCount = new AtomicInteger(0);
 
+        // 遍歷所有世界
         for (World world : plugin.getServer().getWorlds()) {
             ServerScheduler.processEntities(plugin, world, 
                 entity -> {
