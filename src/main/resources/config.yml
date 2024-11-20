@@ -1,0 +1,6 @@
+# NoWitherBossbar 配置文件
+
+# 設置用於隱藏 Boss 血條的標記
+# 可以添加多個標記，血條名稱包含任意一個標記都會被隱藏
+hide-bossbar-tags:
+  - "nbr"

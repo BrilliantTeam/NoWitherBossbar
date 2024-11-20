@@ -2,4 +2,10 @@ name: NoWitherBossbar
 main: Rice.Chen.NoWitherBossbar.NoWitherBossbar
 api-version: 1.20
 folia-supported: true
-version: 1.0
+version: 1.1
+
+commands:
+  nowitherbar:
+    description: NoWitherBossbar plugin commands
+    usage: /nowitherbar <reload|list>
+    aliases: [nwb]
