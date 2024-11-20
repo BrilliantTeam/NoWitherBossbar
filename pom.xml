@@ -6,7 +6,7 @@
 
     <groupId>Rice.Chen</groupId>
     <artifactId>NoWitherBossbar</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
